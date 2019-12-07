@@ -3,6 +3,8 @@ from mydesign import Ui_Form
 import sys,sqlite3
 from functools import partial
 
+#asdasdasd
+
 #===veritabanı hazırlıkları===
 db = sqlite3.connect("vt.sqlite")
 im = db.cursor()
