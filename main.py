@@ -4,10 +4,10 @@ import sys,sqlite3
 from functools import partial
 
 #===veritabanı hazırlıkları===
-db = sqlite3.connect("vt.sqlite")
+db = sqlite3.connect("vst.sqlite")
 im = db.cursor()
 im.execute("""CREATE TABLE IF NOT EXISTS yolcular
-(id,ad,soyad,cinsiyet,tarih,saat,binis,inis)""")
+(id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,ad,soyad,cinsiyet,tarih,saat,binis,inis)""")
 #=== === === === === === === ===
 
 class mywindow(QtWidgets.QMainWindow):
@@ -53,11 +53,13 @@ class mywindow(QtWidgets.QMainWindow):
         binis = self.ui.binis_TEdit.toPlainText()
         inis = self.ui.inis_TEdit.toPlainText()
 
-        veri = [
-            (0,ad,soyad,cinsiyet,tarih,saat,binis,inis)
-        ]
+        veri = (ad,soyad,cinsiyet,tarih,saat,binis,inis)
 
-        im.execute("""INSERT INTO yolcular VALUES(?,?,?,?,?,?,?,?)""",veri[0])
+        im.execute(
+            """INSERT INTO yolcular 
+                (ad,soyad,cinsiyet,tarih,saat,binis,inis) 
+                VALUES(?,?,?,?,?,?,?)""", veri)
+       
         db.commit()
         
         print("ad > "+ad
