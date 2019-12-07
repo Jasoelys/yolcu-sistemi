@@ -4,7 +4,7 @@ import sys,sqlite3
 from functools import partial
 
 #===veritabanı hazırlıkları===
-db = sqlite3.connect("vst.sqlite")
+db = sqlite3.connect("vt.sqlite")
 im = db.cursor()
 im.execute("""CREATE TABLE IF NOT EXISTS yolcular
 (id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,ad,soyad,cinsiyet,tarih,saat,binis,inis)""")
